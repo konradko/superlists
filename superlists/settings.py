@@ -1,6 +1,7 @@
 from os import path
 
 # Django settings for superlists project.
+PROJECT_ROOT = path.abspath(path.join(path.dirname(__file__), '..'))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -14,8 +15,8 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'database.sqlite',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
+        'NAME': path.join(PROJECT_ROOT, '..', 'database', 'database.sqlite'),
+                # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
@@ -63,7 +64,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = path.abspath(path.join(path.dirname(__file__), '../../static'))
+STATIC_ROOT = path.abspath(path.join(PROJECT_ROOT, '../static'))
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
